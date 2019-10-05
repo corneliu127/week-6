@@ -1,7 +1,8 @@
 
 public class OutOfFuelState implements State {
 
-	Engine engine;
+	private static final long serialVersionUID = 1L;
+	transient Engine engine;
 	
 	public OutOfFuelState(Engine engine) {
 		this.engine = engine;

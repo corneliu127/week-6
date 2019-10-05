@@ -1,6 +1,10 @@
+import java.rmi.*;
+import java.rmi.server.*;
 
-public class Engine {
+public class Engine extends UnicastRemoteObject implements EngineRemote {
 
+	private static final long serialVersionUID = 1L;
+	
 	State outOfFuelState;
 	State idleState;
 	State acceleratingState;
@@ -8,12 +12,15 @@ public class Engine {
 	
 	State state = outOfFuelState;
 	int fuel = 0;
+	String location;
 	
-	public Engine(int fuel ) {
+	public Engine(String location, int fuel ) throws RemoteException {
+		
 		outOfFuelState = new OutOfFuelState(this);
 		idleState = new IdleState(this);
 		acceleratingState = new AcceleratingState(this);
 		deceleratingState = new DeceleratingState(this);
+		
 		
 		this.fuel = fuel;
 		if (fuel > 0) {
@@ -78,6 +85,21 @@ public class Engine {
 		result.append("\n");
 		result.append("Engine is " + state + "\n");
 		return result.toString();
+	}
+
+
+	public int getFuel() throws RemoteException {		
+		return fuel;
+	}
+
+
+	public String getLocation() throws RemoteException {
+		return location;
+	}
+
+
+	public State getState() throws RemoteException {		
+		return state;
 	}
 	
 	

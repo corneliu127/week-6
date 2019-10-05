@@ -1,7 +1,8 @@
 
 public class DeceleratingState implements State {
 
-	Engine engine;
+	private static final long serialVersionUID = 1L;
+	transient Engine engine;
 	
 	public DeceleratingState(Engine engine) {
 		this.engine = engine;

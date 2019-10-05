@@ -1,7 +1,9 @@
 
 public class AcceleratingState implements State {
 
-	Engine engine;
+	private static final long serialVersionUID = 1L;
+	transient Engine engine;
+
 	
 	public AcceleratingState(Engine engine) {
 		this.engine = engine;

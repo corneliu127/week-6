@@ -1,6 +1,7 @@
 
 public class IdleState implements State {
 	
+	private static final long serialVersionUID = 1L;
 	Engine engine;
 	
 	public IdleState(Engine engine) {
